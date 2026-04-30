@@ -58,14 +58,6 @@ export default {
       return new Response("Method Not Allowed", { status: 405 });
     }
 
-    if (env.TELEGRAM_SECRET) {
-      const secret = request.headers.get("X-Telegram-Bot-Api-Secret-Token");
-
-      if (secret !== env.TELEGRAM_SECRET) {
-        return new Response("Unauthorized", { status: 401 });
-      }
-    }
-
     let update: TelegramUpdate;
 
     try {
